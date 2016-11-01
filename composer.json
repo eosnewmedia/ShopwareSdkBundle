@@ -11,15 +11,20 @@
   ],
   "autoload": {
     "psr-4": {
-      "Enm\\Bundle\\ShopwareSdkBundle\\": "src"
+      "Enm\\Bundle\\ShopwareSdk\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Enm\\Bundle\\ShopwareSdk\\Tests\\": "tests"
     }
   },
   "require": {
-    "leadcommerce/shopware-sdk": "^1.0"
+    "leadcommerce/shopware-sdk": "^1.0",
+    "symfony/symfony": "^2.7|^3.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^5.6",
-    "symfony/symfony": "^3.1"
+    "phpunit/phpunit": "^5.6"
   },
   "minimum-stability": "stable"
 }

@@ -22,11 +22,11 @@ class Configuration implements ConfigurationInterface
         
         $root = $treeBuilder->root('enm_shopware_sdk')->children();
         
-        $root->scalarNode('base_url')->isRequired();
+        $root->scalarNode('base_url')->isRequired()->cannotBeEmpty();
         
-        $root->scalarNode('username')->isRequired();
+        $root->scalarNode('username')->isRequired()->cannotBeEmpty();
         
-        $root->scalarNode('api_key')->isRequired();
+        $root->scalarNode('api_key')->isRequired()->cannotBeEmpty();
         
         return $treeBuilder;
     }
