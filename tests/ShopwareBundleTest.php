@@ -4,7 +4,7 @@ namespace Enm\Bundle\ShopwareSdk\Tests;
 
 use Enm\Bundle\ShopwareSdk\DependencyInjection\EnmShopwareSdkExtension;
 use LeadCommerce\Shopware\SDK\ShopwareClient;
-use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
