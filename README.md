@@ -18,7 +18,7 @@ In your `AppKernel`:
     {
         $bundles = [
           // ...
-          new \Enm\Bundle\ShopwareSdk\EnmShopwareSdkBundle,
+          new \Enm\Bundle\ShopwareSdk\EnmShopwareSdkBundle(),
         ];
          // ...
          
