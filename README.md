@@ -37,3 +37,7 @@ Simply configure your shop connection over the global `config.yml`:
 
     /** @var \LeadCommerce\Shopware\SDK\ShopwareClient $shopwareClient */
     $shopwareClient = $container->get('enm.shopware.client');
+
+## Tests
+
+    php vendor/bin/phpunit
