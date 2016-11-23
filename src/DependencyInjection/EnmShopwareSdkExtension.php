@@ -6,6 +6,8 @@ namespace Enm\Bundle\ShopwareSdk\DependencyInjection;
 use Enm\ShopwareSdk\EntryPoint;
 use Enm\ShopwareSdk\Http\GuzzleAdapter;
 use GuzzleHttp\Client;
+use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
+use JMS\Serializer\SerializerBuilder;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -26,11 +28,17 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
      */
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
+        /**
+         * Guzzle Client
+         */
         $guzzleDefinition = new Definition(Client::class);
         $guzzleDefinition->setPublic(false);
         
         $container->setDefinition('enm.shopware.guzzle', $guzzleDefinition);
         
+        /**
+         * Http Client (Guzzle Adapter)
+         */
         $clientDefinition = new Definition(
           GuzzleAdapter::class,
           [
@@ -52,6 +60,28 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
           $clientDefinition
         );
         
+        /**
+         * JMS Serializer
+         * The serializer bundle isn't used here because a custom naming strategy
+         * only for this sdk is needed.
+         */
+        $serializerDefinition = new Definition();
+        $serializerDefinition->setSynthetic(true);
+        $serializerDefinition->setPublic(false);
+        $container->setDefinition(
+          'enm.shopware.jms_serializer',
+          $serializerDefinition
+        );
+        
+        $serializer = SerializerBuilder::create()
+                                       ->setPropertyNamingStrategy(new IdenticalPropertyNamingStrategy())
+                                       ->build();
+        
+        $container->set('enm.shopware.jms_serializer', $serializer);
+        
+        /**
+         * Entry Point
+         */
         $entryPointDefinition = new Definition(
           EntryPoint::class,
           [
@@ -61,13 +91,13 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
         $entryPointDefinition->addMethodCall(
           'addDefaultSerializers',
           [
-            new Reference('jms_serializer.serializer'),
+            new Reference('enm.shopware.jms_serializer'),
           ]
         );
         $entryPointDefinition->addMethodCall(
           'addDefaultDeserializers',
           [
-            new Reference('jms_serializer.serializer'),
+            new Reference('enm.shopware.jms_serializer'),
           ]
         );
         
