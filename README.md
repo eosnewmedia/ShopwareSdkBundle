@@ -38,6 +38,8 @@ Simply configure your shop connection over the global `config.yml`:
     /** @var \Enm\Bundle\ShopwareSdk\EntryPoint $shopwareClient */
     $entryPoint = $container->get('enm.shopware.entry_point');
 
+The Bundle uses the default implementation of `enm/shopware-sdk` with `guzzlehttp/guzzle` and `jms/serializer`.
+
 ## Tests
 
     php vendor/bin/phpunit
