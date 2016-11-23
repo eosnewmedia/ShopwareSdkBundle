@@ -59,7 +59,13 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
           ]
         );
         $entryPointDefinition->addMethodCall(
-          'addDefaultResponseHandlers',
+          'addDefaultSerializers',
+          [
+            new Reference('jms_serializer.serializer'),
+          ]
+        );
+        $entryPointDefinition->addMethodCall(
+          'addDefaultDeserializers',
           [
             new Reference('jms_serializer.serializer'),
           ]

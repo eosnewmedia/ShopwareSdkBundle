@@ -259,12 +259,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/eosnewmedia/ShopwareSdk.git",
-                "reference": "a9365641aab0a1e6cec2994b7f53caab4f03bc4d"
+                "reference": "c466d462ae599046c4542b28d3e55a70b451ed50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eosnewmedia/ShopwareSdk/zipball/a9365641aab0a1e6cec2994b7f53caab4f03bc4d",
-                "reference": "a9365641aab0a1e6cec2994b7f53caab4f03bc4d",
+                "url": "https://api.github.com/repos/eosnewmedia/ShopwareSdk/zipball/c466d462ae599046c4542b28d3e55a70b451ed50",
+                "reference": "c466d462ae599046c4542b28d3e55a70b451ed50",
                 "shasum": ""
             },
             "require": {
@@ -305,7 +305,7 @@
                 }
             ],
             "description": "An implementation for accessing the Shopware api",
-            "time": "2016-11-23 12:58:09"
+            "time": "2016-11-23 15:16:52"
         },
         {
             "name": "guzzlehttp/guzzle",
