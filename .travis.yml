@@ -2,10 +2,10 @@ language: php
 
 php:
   - 7.0
-  - hhvm
+  - 7.1
 
 env:
-  - EnmShopwareSdkTestCase
+  - EnmShopwareSdkBundleTestCase
 
 before_script:
   - composer self-update

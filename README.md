@@ -1,4 +1,4 @@
-Enm Shopware SDK Bundle
+Shopware SDK Bundle
 =======================
 A symfony integration for [enm/shopware-sdk](https://github.com/eosnewmedia/ShopwareSdk).
 
@@ -35,8 +35,8 @@ Simply configure your shop connection over the global `config.yml`:
 
 ## Usage
 
-    /** @var \LeadCommerce\Shopware\SDK\ShopwareClient $shopwareClient */
-    $shopwareClient = $container->get('enm.shopware.client');
+    /** @var \Enm\Bundle\ShopwareSdk\EntryPoint $shopwareClient */
+    $entryPoint = $container->get('enm.shopware.entry_point');
 
 ## Tests
 
