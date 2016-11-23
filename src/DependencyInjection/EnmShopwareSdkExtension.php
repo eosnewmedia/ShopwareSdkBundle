@@ -1,10 +1,10 @@
 <?php
+declare(strict_types = 1);
 
 namespace Enm\Bundle\ShopwareSdk\DependencyInjection;
 
-use LeadCommerce\Shopware\SDK\ShopwareClient;
+use Enm\ShopwareSdk\EntryPoint;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
@@ -23,15 +23,12 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
      */
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
-        $container->setDefinition(
-          'enm.shopware.client',
-          new Definition(
-            ShopwareClient::class,
-            [
-              $mergedConfig['base_url'],
-              $mergedConfig['username'],
-              $mergedConfig['api_key'],
-            ]
+        $container->set(
+          'enm.shopware.entry_point',
+          EntryPoint::buildDefault(
+            $mergedConfig['base_url'],
+            $mergedConfig['username'],
+            $mergedConfig['api_key']
           )
         );
     }

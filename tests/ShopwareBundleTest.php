@@ -1,9 +1,10 @@
 <?php
+declare(strict_types = 1);
 
 namespace Enm\Bundle\ShopwareSdk\Tests;
 
 use Enm\Bundle\ShopwareSdk\DependencyInjection\EnmShopwareSdkExtension;
-use LeadCommerce\Shopware\SDK\ShopwareClient;
+use Enm\ShopwareSdk\EntryPointInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -25,8 +26,8 @@ class ShopwareBundleTest extends TestCase
         ], $builder);
         
         self::assertInstanceOf(
-          ShopwareClient::class,
-          $builder->get('enm.shopware.client')
+          EntryPointInterface::class,
+          $builder->get('enm.shopware.entry_point')
         );
     }
     
