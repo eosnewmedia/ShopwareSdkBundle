@@ -18,6 +18,7 @@ In your `AppKernel`:
     {
         $bundles = [
           // ...
+          new \JMS\SerializerBundle\JMSSerializerBundle(),
           new \Enm\Bundle\ShopwareSdk\EnmShopwareSdkBundle(),
         ];
          // ...
