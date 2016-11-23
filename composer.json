@@ -7,6 +7,14 @@
     {
       "name": "Philipp Marien",
       "email": "marien@eosnewmedia.de"
+    },
+    {
+      "name": "Dirk Heyka",
+      "email": "heyka@eosnewmedia.de"
+    },
+    {
+      "name": "Nicklas Reincke",
+      "email": "reincke@eosnewmedia.de"
     }
   ],
   "autoload": {
@@ -21,10 +29,10 @@
   },
   "require": {
     "php": ">=5.6",
-    "leadcommerce/shopware-sdk": "^1.0",
     "symfony/http-kernel": "^2.7|^3.0",
     "symfony/dependency-injection": "^2.7|^3.0",
-    "symfony/config": "^2.7|^3.0"
+    "symfony/config": "^2.7|^3.0",
+    "enm/shopware-sdk": "dev-develop@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.6"
