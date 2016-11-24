@@ -7,7 +7,6 @@ use Enm\ShopwareSdk\EntryPoint;
 use Enm\ShopwareSdk\Http\GuzzleAdapter;
 use GuzzleHttp\Client;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
-use JMS\Serializer\SerializerBuilder;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -62,24 +61,12 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
         
         /**
          * JMS Serializer
-         * The serializer bundle isn't used here because a custom naming strategy
-         * only for this sdk is needed.
+         * Overwrite the CamelCasedNamingStrategy with IdenticalPropertyNamingStrategy
          */
-//        $serializerDefinition = new Definition();
-//        $serializerDefinition->setSynthetic(true);
-//        $serializerDefinition->setPublic(false);
-//        $container->setDefinition(
-//          'enm.shopware.jms_serializer',
-//          $serializerDefinition
-//        );
-
-        $container->register('enm.shopware.jms_serializer')->setSynthetic('true');
-
-        $serializer = SerializerBuilder::create()
-                                       ->setPropertyNamingStrategy(new IdenticalPropertyNamingStrategy())
-                                       ->build();
-        
-        $container->set('enm.shopware.jms_serializer', $serializer);
+        $container->setParameter(
+          'jms_serializer.camel_case_naming_strategy.class',
+          IdenticalPropertyNamingStrategy::class
+        );
         
         /**
          * Entry Point
@@ -93,13 +80,13 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
         $entryPointDefinition->addMethodCall(
           'addDefaultSerializers',
           [
-            new Reference('enm.shopware.jms_serializer'),
+            new Reference('jms_serializer.serializer'),
           ]
         );
         $entryPointDefinition->addMethodCall(
           'addDefaultDeserializers',
           [
-            new Reference('enm.shopware.jms_serializer'),
+            new Reference('jms_serializer.serializer'),
           ]
         );
         
