@@ -6,7 +6,6 @@ namespace Enm\Bundle\ShopwareSdk\DependencyInjection;
 use Enm\ShopwareSdk\EntryPoint;
 use Enm\ShopwareSdk\Http\GuzzleAdapter;
 use GuzzleHttp\Client;
-use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -57,15 +56,6 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
         $container->setDefinition(
           'enm.shopware.http_client',
           $clientDefinition
-        );
-        
-        /**
-         * JMS Serializer
-         * Overwrite the CamelCasedNamingStrategy with IdenticalPropertyNamingStrategy
-         */
-        $container->setParameter(
-          'jms_serializer.camel_case_naming_strategy.class',
-          IdenticalPropertyNamingStrategy::class
         );
         
         /**
