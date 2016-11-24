@@ -65,14 +65,16 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
          * The serializer bundle isn't used here because a custom naming strategy
          * only for this sdk is needed.
          */
-        $serializerDefinition = new Definition();
-        $serializerDefinition->setSynthetic(true);
-        $serializerDefinition->setPublic(false);
-        $container->setDefinition(
-          'enm.shopware.jms_serializer',
-          $serializerDefinition
-        );
-        
+//        $serializerDefinition = new Definition();
+//        $serializerDefinition->setSynthetic(true);
+//        $serializerDefinition->setPublic(false);
+//        $container->setDefinition(
+//          'enm.shopware.jms_serializer',
+//          $serializerDefinition
+//        );
+
+        $container->register('enm.shopware.jms_serializer')->setSynthetic('true');
+
         $serializer = SerializerBuilder::create()
                                        ->setPropertyNamingStrategy(new IdenticalPropertyNamingStrategy())
                                        ->build();

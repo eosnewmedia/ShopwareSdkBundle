@@ -25,7 +25,9 @@ class ShopwareBundleTest extends TestCase
             'api_key'  => 'test',
           ],
         ], $builder);
-        
+
+        $builder->compile();
+
         self::assertInstanceOf(
           EntryPointInterface::class,
           $builder->get('enm.shopware.entry_point')
