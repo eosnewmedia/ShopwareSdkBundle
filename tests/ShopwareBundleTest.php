@@ -1,9 +1,11 @@
 <?php
+declare(strict_types = 1);
 
 namespace Enm\Bundle\ShopwareSdk\Tests;
 
 use Enm\Bundle\ShopwareSdk\DependencyInjection\EnmShopwareSdkExtension;
-use LeadCommerce\Shopware\SDK\ShopwareClient;
+use Enm\ShopwareSdk\EntryPointInterface;
+use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -14,7 +16,12 @@ class ShopwareBundleTest extends TestCase
 {
     public function testShopwareExtension()
     {
-        $builder   = new ContainerBuilder();
+        $builder = new ContainerBuilder();
+        $builder->set(
+          'jms_serializer.serializer',
+          $this->createMock(SerializerInterface::class)
+        );
+        
         $extension = new EnmShopwareSdkExtension();
         $extension->load([
           'enm_shopware_sdk' => [
@@ -24,9 +31,11 @@ class ShopwareBundleTest extends TestCase
           ],
         ], $builder);
         
+        $builder->compile();
+        
         self::assertInstanceOf(
-          ShopwareClient::class,
-          $builder->get('enm.shopware.client')
+          EntryPointInterface::class,
+          $builder->get('enm.shopware.entry_point')
         );
     }
     
@@ -35,7 +44,12 @@ class ShopwareBundleTest extends TestCase
      */
     public function testShopwareConfigurationInvalidBaseUrl()
     {
-        $builder   = new ContainerBuilder();
+        $builder = new ContainerBuilder();
+        $builder->set(
+          'jms_serializer.serializer',
+          $this->createMock(SerializerInterface::class)
+        );
+        
         $extension = new EnmShopwareSdkExtension();
         $extension->load([
           'enm_shopware_sdk' => [
@@ -51,7 +65,12 @@ class ShopwareBundleTest extends TestCase
      */
     public function testShopwareConfigurationInvalidUsername()
     {
-        $builder   = new ContainerBuilder();
+        $builder = new ContainerBuilder();
+        $builder->set(
+          'jms_serializer.serializer',
+          $this->createMock(SerializerInterface::class)
+        );
+        
         $extension = new EnmShopwareSdkExtension();
         $extension->load([
           'enm_shopware_sdk' => [
@@ -67,7 +86,12 @@ class ShopwareBundleTest extends TestCase
      */
     public function testShopwareConfigurationInvalidApiKey()
     {
-        $builder   = new ContainerBuilder();
+        $builder = new ContainerBuilder();
+        $builder->set(
+          'jms_serializer.serializer',
+          $this->createMock(SerializerInterface::class)
+        );
+        
         $extension = new EnmShopwareSdkExtension();
         $extension->load([
           'enm_shopware_sdk' => [

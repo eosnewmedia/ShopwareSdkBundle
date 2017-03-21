@@ -1,6 +1,11 @@
-Enm Shopware SDK Bundle
+Shopware SDK Bundle
 =======================
-A symfony integration for [leadcommerce/shopware-sdk](https://github.com/LeadCommerceDE/shopware-sdk).
+A symfony integration for [enm/shopware-sdk](https://github.com/eosnewmedia/ShopwareSdk).
+
+The Bundle provides the default implementation of `enm/shopware-sdk` with `guzzlehttp/guzzle` and `jms/serializer` as service.
+
+It requires the `jms/serializer-bundle` to be enabled in the `AppKernel`.
+
 
 [![Build Status](https://travis-ci.org/eosnewmedia/ShopwareSdkBundle.svg?branch=master)](https://travis-ci.org/eosnewmedia/ShopwareSdkBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/77b8f306-eefe-45a0-8500-c5ca6a7f56a0/mini.png)](https://insight.sensiolabs.com/projects/77b8f306-eefe-45a0-8500-c5ca6a7f56a0)
@@ -18,6 +23,7 @@ In your `AppKernel`:
     {
         $bundles = [
           // ...
+          new \JMS\SerializerBundle\JMSSerializerBundle(),
           new \Enm\Bundle\ShopwareSdk\EnmShopwareSdkBundle(),
         ];
          // ...
@@ -33,10 +39,12 @@ Simply configure your shop connection over the global `config.yml`:
         username: "test"
         api_key: "test"
 
+This bundle overwrites the default naming strategy of the serializer with `IdenticalPropertyNamingStrategy`.
+
 ## Usage
 
-    /** @var \LeadCommerce\Shopware\SDK\ShopwareClient $shopwareClient */
-    $shopwareClient = $container->get('enm.shopware.client');
+    /** @var \Enm\Bundle\ShopwareSdk\EntryPoint $shopwareClient */
+    $entryPoint = $container->get('enm.shopware.entry_point');
 
 ## Tests
 
