@@ -83,6 +83,6 @@ class EnmShopwareSdkExtension extends ConfigurableExtension
         $container->setDefinition(
           'enm.shopware.entry_point',
           $entryPointDefinition
-        );
+        )->setPublic(true);
     }
 }
