@@ -13,6 +13,10 @@
       "email": "heyka@eosnewmedia.de"
     },
     {
+      "name": "Paul Gütschow",
+      "email": "guetschow@eosnewmedia.de"
+    },
+    {
       "name": "Nicklas Reincke",
       "email": "reincke@eosnewmedia.de"
     }
@@ -29,12 +33,12 @@
   },
   "require": {
     "php": ">=7.0",
-    "symfony/http-kernel": "^2.7|^3.0",
-    "symfony/dependency-injection": "^2.7|^3.0",
-    "symfony/config": "^2.7|^3.0",
-    "enm/shopware-sdk": "^0.1",
+    "symfony/http-kernel": "^2.7|^3.0|^4.0",
+    "symfony/dependency-injection": "^2.7|^3.0|^4.0",
+    "symfony/config": "^2.7|^3.0|^4.0",
+    "enm/shopware-sdk": "^0.1|^0.2",
     "guzzlehttp/guzzle": "^6.2",
-    "jms/serializer-bundle": "^1.1"
+    "jms/serializer-bundle": "^1.1|^2.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.6|^6.0"
