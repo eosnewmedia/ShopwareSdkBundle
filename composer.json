@@ -36,7 +36,7 @@
     "symfony/http-kernel": "^2.7|^3.0|^4.0",
     "symfony/dependency-injection": "^2.7|^3.0|^4.0",
     "symfony/config": "^2.7|^3.0|^4.0",
-    "enm/shopware-sdk": "^0.1",
+    "enm/shopware-sdk": "^0.1|^0.2",
     "guzzlehttp/guzzle": "^6.2",
     "jms/serializer-bundle": "^1.1|^2.3"
   },
